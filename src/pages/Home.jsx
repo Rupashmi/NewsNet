@@ -23,9 +23,7 @@ const Home = () => {
       try {
         setError('');
         setSelected(null);
-        const res = await fetch(
-          `https://newsapi.org/v2/everything?q=${keyword}&apiKey=${API_KEY}`
-        );
+        const res = await fetch(`/api/news?keyword=${keyword}`);
         const data = await res.json();
         if (!data.articles || data.articles.length === 0) {
           setError('No articles found for your search.');
@@ -45,9 +43,7 @@ const Home = () => {
     const fetchArticles = async () => {
       try {
         setError('');
-        const res = await fetch(
-          `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${API_KEY}`
-        );
+        const res = await fetch(`/api/news?category=${category}`);
         const data = await res.json();
         setArticles(data.articles || []);
       } catch (e) {

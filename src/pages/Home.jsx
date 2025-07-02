@@ -3,10 +3,6 @@ import CategoryTabs from '../components/CategoryTabs';
 import ArticleCard from '../components/ArticleCard';
 import ArticleDetail from '../components/ArticleDetail';
 
-const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-
-console.log("Live API KEY:", import.meta.env.VITE_NEWS_API_KEY);
-
 const Home = () => {
   const [category, setCategory] = useState('technology');
   const [articles, setArticles] = useState([]);
@@ -54,9 +50,6 @@ const Home = () => {
 
   return (
     <div className="page-wrapper">
-      <p style={{ color: 'red', fontSize: '0.9rem' }}>
-  ENV KEY: {import.meta.env.NEWS_API_KEY || 'Not found'}
-</p>
       <CategoryTabs selected={category} onSelect={setCategory} onSearch={handleSearch} />
 
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}

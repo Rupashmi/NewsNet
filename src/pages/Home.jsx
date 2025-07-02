@@ -37,6 +37,7 @@ const Home = () => {
         setError('');
         console.log("Fetching category:", category);
         const res = await fetch(`/api/news?category=${category}`);
+        console.log("Raw response:", res);
         const data = await res.json();
         console.log("Fetched data:", data);
         setArticles(data.articles || []);

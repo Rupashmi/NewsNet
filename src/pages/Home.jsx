@@ -5,11 +5,17 @@ import ArticleDetail from '../components/ArticleDetail';
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
+console.log("Live API KEY:", import.meta.env.VITE_NEWS_API_KEY);
+
 const Home = () => {
   const [category, setCategory] = useState('technology');
   const [articles, setArticles] = useState([]);
   const [selected, setSelected] = useState(null);
   const [error, setError] = useState('');
+
+<p style={{ color: 'red', fontSize: '0.9rem' }}>
+  ENV KEY: {import.meta.env.VITE_NEWS_API_KEY || 'Not found'}
+</p>
 
   // ✅ This must come BEFORE return
   const handleSearch = (keyword) => {

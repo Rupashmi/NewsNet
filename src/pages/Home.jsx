@@ -55,7 +55,7 @@ const Home = () => {
   return (
     <div className="page-wrapper">
       <p style={{ color: 'red', fontSize: '0.9rem' }}>
-  ENV KEY: {import.meta.env.VITE_NEWS_API_KEY || 'Not found'}
+  ENV KEY: {import.meta.env.NEWS_API_KEY || 'Not found'}
 </p>
       <CategoryTabs selected={category} onSelect={setCategory} onSearch={handleSearch} />
 

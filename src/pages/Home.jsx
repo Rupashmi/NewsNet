@@ -13,10 +13,6 @@ const Home = () => {
   const [selected, setSelected] = useState(null);
   const [error, setError] = useState('');
 
-<p style={{ color: 'red', fontSize: '0.9rem' }}>
-  ENV KEY: {import.meta.env.VITE_NEWS_API_KEY || 'Not found'}
-</p>
-
   // ✅ This must come BEFORE return
   const handleSearch = (keyword) => {
     const fetchSearchedArticles = async () => {
@@ -43,8 +39,10 @@ const Home = () => {
     const fetchArticles = async () => {
       try {
         setError('');
+        console.log("Fetching category:", category);
         const res = await fetch(`/api/news?category=${category}`);
         const data = await res.json();
+        console.log("Fetched data:", data);
         setArticles(data.articles || []);
       } catch (e) {
         setError('Failed to fetch articles.');
@@ -56,6 +54,9 @@ const Home = () => {
 
   return (
     <div className="page-wrapper">
+      <p style={{ color: 'red', fontSize: '0.9rem' }}>
+  ENV KEY: {import.meta.env.VITE_NEWS_API_KEY || 'Not found'}
+</p>
       <CategoryTabs selected={category} onSelect={setCategory} onSearch={handleSearch} />
 
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
